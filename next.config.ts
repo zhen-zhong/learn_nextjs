@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
 
+/** @type {import('next').NextConfig} */
+
+const nextI18Next = require('./next-i18next.config');
 const nextConfig: NextConfig = {
+  i18n: {
+    locales: ['en', 'zh'], 
+    defaultLocale: 'en',
+  },
   async redirects() {
     return [
       {
@@ -18,6 +25,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
 };
 
 export default nextConfig;
