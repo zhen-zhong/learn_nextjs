@@ -1,13 +1,11 @@
 import type { NextConfig } from "next";
+import nextI18nConfig from './next-i18next.config'
 
 /** @type {import('next').NextConfig} */
 
-const nextI18Next = require('./next-i18next.config');
 const nextConfig: NextConfig = {
-  i18n: {
-    locales: ['en', 'zh'], 
-    defaultLocale: 'en',
-  },
+  reactStrictMode: true,
+  i18n: nextI18nConfig.i18n,
   async redirects() {
     return [
       {
