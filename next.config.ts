@@ -1,11 +1,9 @@
 import type { NextConfig } from "next";
-import nextI18nConfig from './next-i18next.config'
 
 /** @type {import('next').NextConfig} */
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  i18n: nextI18nConfig.i18n,
   async redirects() {
     return [
       {
