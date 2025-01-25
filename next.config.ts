@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 /** @type {import('next').NextConfig} */
 
 const nextConfig: NextConfig = {
+  i18n:require('./next-i18next.config').i18n,
   reactStrictMode: true,
   async redirects() {
     return [
