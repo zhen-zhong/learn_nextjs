@@ -1,3 +1,4 @@
 {
-    "test": "Hello, welcome to our website!"
+    "test": "Hello, welcome to our website!",
+    "languageSwitcher": "Switch from <1>{{lng}}</1> to: "
 }
