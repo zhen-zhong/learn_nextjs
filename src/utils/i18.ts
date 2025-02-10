@@ -10,7 +10,7 @@ i18n.use(initReactI18next).init({
         zh: { translation: zh },
     },
     lng: 'en', // 默认语言
-    fallbackLng: 'en', // 如果语言加载失败则回退到英语
+    fallbackLng: 'en',
     interpolation: {
         escapeValue: false,
     },
