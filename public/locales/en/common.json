@@ -1,3 +1,6 @@
 {
-    "test": "Hello, welcome to our website!"
+    "test": "Hello, welcome to our website!",
+    "HomePage": {
+        "title": "Hello world!"
+    }
 }

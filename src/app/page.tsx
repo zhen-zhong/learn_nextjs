@@ -1,6 +1,10 @@
-const Home = () =>{
+import { useTranslations } from 'next-intl';
+const Home = () => {
+  const t = useTranslations();
   return (
-    <>Home</>
+    <>Home
+      {t('test')}
+    </>
   )
 }
 
