@@ -20,7 +20,7 @@ function getLanguageFromCookie(): string {
             return c.substring(name.length, c.length); 
         }
     }
-    return ""; 
+    return 'zh'; // 默认语言为中文
 }
 
 export default { setLanguageCookie, getLanguageFromCookie };

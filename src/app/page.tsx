@@ -1,22 +1,18 @@
 "use client"
 
 import { useTranslations, useLocale } from 'next-intl';
-import utils from 'src/utils/utils';
+import useLanguageStore from 'src/store/useLanguageStore';
 const Home = () => {
   const t = useTranslations();
-  const locale = useLocale();
-
-  function change(e: string) {
-    console.log(locale, 'locale');
-    utils.setLanguageCookie(e);
-    console.log(utils.getLanguageFromCookie());
-  }
+  const { locale, setLocale } = useLanguageStore((state) => state); 
 
   return (
     <>Home
       {t('test')}
-      <button onClick={() => { change('zh') }}>zh</button>
-      <button onClick={() => { change('en') }}>en</button>
+      <div>
+        <button onClick={() => setLocale("en")}>English</button>
+        <button onClick={() => setLocale("zh")}>中文</button>
+      </div>
     </>
   )
 }

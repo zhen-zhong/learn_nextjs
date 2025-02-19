@@ -1,23 +1,38 @@
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
+"use client";
 
-export default async function RootLayout({
-  children
-}: {
-  children: React.ReactNode;
-}) {
-  const locale = await getLocale();
+import React, { useState, useEffect } from "react";
+import { IntlProvider } from "next-intl";
+import useLanguageStore from "src/store/useLanguageStore";
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
-  const messages = await getMessages();
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+
+  const [localeMessages, setLocaleMessages] = useState<any>(null); // 语言消息
+  const { locale, setLocale } = useLanguageStore((state) => state); 
+
+  // 在组件加载时，根据当前的 locale 加载消息文件
+  useEffect(() => {
+    const loadMessages = async () => {
+      try {
+        const messages = await import(`../public/locales/${locale}/common.json`);
+        setLocaleMessages(messages.default); // 设置翻译消息
+      } catch (error) {
+        console.error("Error loading language messages:", error);
+      }
+    };
+
+    loadMessages();
+  }, [locale]);
 
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        {localeMessages && (
+          <IntlProvider locale={locale} messages={localeMessages}>
+            <div>
+              {children}
+            </div>
+          </IntlProvider>
+        )}
       </body>
     </html>
   );
