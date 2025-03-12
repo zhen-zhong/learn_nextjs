@@ -12,6 +12,6 @@ export default getRequestConfig(async () => {
     // 动态加载相应的语言消息
     return {
         locale,
-        messages: (await import(`../public/locales/${locale}/common.json`)).default,
+        messages: (await import(`src/public/locales/${locale}/common.json`)).default,
     };
 });
