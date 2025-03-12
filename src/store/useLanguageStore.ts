@@ -5,7 +5,6 @@ interface LanguageState {
     locale: string;
     setLocale: (locale: string) => void;
 }
-
 // 使用 `persist` 中间件时需要通过类型推导
 const useLanguageStore = create<LanguageState>()(
     persist(
@@ -15,7 +14,7 @@ const useLanguageStore = create<LanguageState>()(
         }),
         {
             name: 'language-storage', // 持久化的键
-            storage: createJSONStorage(() => localStorage), // 使用 localStorage
+            storage: createJSONStorage(() => localStorage),
         }
     )
 );
