@@ -13,8 +13,8 @@ const Home = () => {
   }
 
   return (
-    <>Home
-      {t('test')}
+    <>
+      
       <div>
         <button onClick={() => setLocale("en")}>English</button>
         <button onClick={() => setLocale("zh")}>中文</button>
@@ -24,7 +24,7 @@ const Home = () => {
         <h1>Welcome to Next.js with AOS!</h1>
 
         <div data-aos="fade-up">
-          <p>This content will fade up when you scroll to it.</p>
+          <p>{t('test')}</p>
         </div>
 
         <div data-aos="fade-left">

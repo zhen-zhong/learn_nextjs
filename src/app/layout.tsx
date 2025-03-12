@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   useEffect(() => {
     const loadMessages = async () => {
       try {
-        const messages = await import(`src/public/locales/${locale}/common.json`);
+        const messages = await import(`public/locales/${locale}/common.json`);
         setLocaleMessages(messages.default); // 设置翻译消息
       } catch (error) {
         console.error("Error loading language messages:", error);
@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   useEffect(() => {
     AOS.init({
-      duration: 1000,
+      duration: 800,
     });
     return () => AOS.refresh();
   }, [])
