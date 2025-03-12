@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from "react";
 import { IntlProvider } from "next-intl";
 import useLanguageStore from "src/store/useLanguageStore";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
   const [localeMessages, setLocaleMessages] = useState<any>(null); // 语言消息
-  const { locale, setLocale } = useLanguageStore((state) => state); 
+  const { locale, setLocale } = useLanguageStore((state) => state);
 
   // 在组件加载时，根据当前的 locale 加载消息文件
   useEffect(() => {
@@ -22,6 +24,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
     loadMessages();
   }, [locale]);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+    return () => AOS.refresh();
+  }, [])
 
   return (
     <html lang={locale}>
