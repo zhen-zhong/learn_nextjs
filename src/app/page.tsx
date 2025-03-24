@@ -18,7 +18,7 @@ const Home = () => {
     <>
 
       <div>
-        <button onClick={() => setLocale("en")}>English</button>
+        <button className="text-3xl font-bold underline" onClick={() => setLocale("en")}>English</button>
         <button onClick={() => setLocale("zh")}>中文</button>
         <button onClick={handleRedirect}>Go to Dashboard</button>
       </div>
