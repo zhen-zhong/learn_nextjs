@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   useEffect(() => {
     const loadMessages = async () => {
       try {
-        const messages = await import(`public/locales/${locale}/common.json`);
+        const messages = await import(`src/assets/locales/${locale}/common.json`);
         setLocaleMessages(messages.default); // 设置翻译消息
       } catch (error) {
         console.error("Error loading language messages:", error);

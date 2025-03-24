@@ -3,6 +3,8 @@
 import { useTranslations, useLocale } from 'next-intl';
 import useLanguageStore from 'src/store/useLanguageStore';
 import { useRouter } from 'next/navigation'
+import 'src/app/globals.css';
+
 const Home = () => {
   const t = useTranslations();
   const router = useRouter();
@@ -14,20 +16,18 @@ const Home = () => {
 
   return (
     <>
-      
+
       <div>
         <button onClick={() => setLocale("en")}>English</button>
         <button onClick={() => setLocale("zh")}>中文</button>
         <button onClick={handleRedirect}>Go to Dashboard</button>
       </div>
       <div>
-        <h1>Welcome to Next.js with AOS!</h1>
-
         <div data-aos="fade-up">
           <p>{t('test')}</p>
         </div>
 
-        <div data-aos="fade-left">
+        <div data-aos="fade-left" className='p-4 bg-gray-200 color-red'>
           <p>This content will fade left when you scroll to it.</p>
         </div>
 
