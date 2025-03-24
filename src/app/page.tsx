@@ -3,6 +3,9 @@
 import { useTranslations, useLocale } from 'next-intl';
 import useLanguageStore from 'src/store/useLanguageStore';
 import { useRouter } from 'next/navigation'
+import { Button } from "@/components/ui/button"
+import { Alert, AlertDescription, AlertTitle } from "src/components/ui/alert"
+
 import 'src/app/globals.css';
 
 const Home = () => {
@@ -18,10 +21,18 @@ const Home = () => {
     <>
 
       <div>
+        <Alert>
+          <AlertTitle>Heads up!</AlertTitle>
+          <AlertDescription>
+            You can add components and dependencies to your app using the cli.
+          </AlertDescription>
+        </Alert>
+
         <button className="text-3xl font-bold underline" onClick={() => setLocale("en")}>English</button>
         <button onClick={() => setLocale("zh")}>中文</button>
         <button onClick={handleRedirect}>Go to Dashboard</button>
       </div>
+      <Button className='p-2'>shadcn button</Button>
       <div>
         <div data-aos="fade-up">
           <p>{t('test')}</p>
