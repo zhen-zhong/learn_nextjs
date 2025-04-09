@@ -20,7 +20,7 @@ export function middleware(request: NextRequest) {
     if (pathname === '/404' || pathname === '/_error' || pathname === '/500' || pathname === '/502') {
         return NextResponse.next()
     }
-
+    
     // 重定向到 /404 页面
     return NextResponse.redirect(new URL('/404', request.url))
 }
