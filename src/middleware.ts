@@ -11,15 +11,20 @@ const auth = (request: NextRequest) => {
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl
     console.log('Middleware triggered', pathname);
-    if (pathname === '/' || pathname === '/login') {
+
+    // 如果是根路径、登录页或认证通过，直接继续请求
+    if (pathname === '/' || pathname === '/login' || auth(request)) {
         return NextResponse.next()
     }
-    if (auth(request)) {
+
+    if (pathname === '/404' || pathname === '/_error' || pathname === '/500' || pathname === '/502') {
         return NextResponse.next()
     }
-    return NextResponse.redirect(new URL('/login', request.url))
+
+    // 重定向到 /404 页面
+    return NextResponse.redirect(new URL('/404', request.url))
 }
 
 export const config = {
-    matcher: '/((?!_next|favicon.ico).*)',
+    matcher: '/((?!_next|favicon.ico).*)', // 排除 _next 静态文件和 favicon.ico
 }
