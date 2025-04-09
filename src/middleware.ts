@@ -1,11 +1,25 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse, NextRequest } from 'next/server'
 
-export const middleware = (request: NextRequest) => {
-    // 请求路由为 /about/** 重定向到 /home
-    return NextResponse.redirect(new URL("/home", request.url));
-};
+const auth = (request: NextRequest) => {
+    if (!request.cookies.get('access_token')) {
+        console.log('路由拦截成功')
+        return false
+    }
+    return true
+}
 
-/** 配置匹配路径 */
+export function middleware(request: NextRequest) {
+    const { pathname } = request.nextUrl
+    console.log('Middleware triggered', pathname);
+    if (pathname === '/' || pathname === '/login') {
+        return NextResponse.next()
+    }
+    if (auth(request)) {
+        return NextResponse.next()
+    }
+    return NextResponse.redirect(new URL('/login', request.url))
+}
+
 export const config = {
-    matcher: "/about/:path*",
-};
+    matcher: '/((?!_next|favicon.ico).*)',
+}
